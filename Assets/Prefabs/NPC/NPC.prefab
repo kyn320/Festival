@@ -1841,30 +1841,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkList:
   - say: "\uC544.. \uC548\uD314\uB9AC\uB124.."
-    id: 1
   - say: "\uC5B4\uC11C\uC635\uC1FC!"
-    id: 2
   - say: "\uC0AC\uC138\uC694 \uC0AC\uC138\uC694"
-    id: 3
   - say: "\uC778\uC0DD\uC740 \uD55C\uBC29\uC774\uB2E4."
-    id: 4
   - say: "1\uC778 \uAC1C\uBC1C \uD798\uB4E4\uB2E4. \u3160^\u3160"
-    id: 5
+  wantTalk:
+  - say: "\uC774\uAC74 \uC5B4\uB514\uC11C \uD314\uC9C0..?"
+  - say: "\uC5B4\uB514\uAC00 \uAC00\uC7A5 \uC2F8\uB824\uB098.."
+  - say: "\uAD6C\uD560 \uC218 \uC788\uB098.."
+  buyFailTalk:
   - say: "\uB3C8\uC774 \uBAA8\uC790\uB974\uB124.."
-    id: 6
-  - say: "\uB108\uBB34 \uBE44\uC2F8..."
-    id: 7
-  wantTalkList:
-  - say: "\uC774\uAC74 \uC5B4\uB514 \uC788\uC9C0.."
-    id: 1
-  - say: "\uC774\uAC70 \uC2F8\uAC8C \uD30C\uB294 \uACF3\uC774 \uC5B4\uB514\uB824\uB098.."
-    id: 2
-  - say: "\uD30C\uB294 \uACF3\uC774 \uC5B4\uB514\uB824\uB098.."
-    id: 3
-  - say: "\uB4DD\uD15C \uD588\uB2E4."
-    id: 4
-  - say: "\uB4DC\uB514\uC5B4 \uC0C0\uB2E4!"
-    id: 5
+  - say: "\uB108\uBB34 \uBE44\uC2F8\uB2E4.."
+  buySuccessTalk:
+  - say: "\uB4DC\uB514\uC5B4 \uAD6C\uD588\uB2E4."
+  - say: "\uB4DD\uD15C!!"
   talkDelayTime: 0
   talkDelayTimeBase: 10
   talkDelayTimeRange: 10

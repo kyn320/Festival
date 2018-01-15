@@ -14,7 +14,6 @@ public class UIWantBox : MonoBehaviour
     public TalkBehaviour talker;
     public Item item;
     public Image iconImage;
-    public Text contextText;
     public Vector3 margin;
 
     public float viewTime = 10f;
@@ -32,12 +31,11 @@ public class UIWantBox : MonoBehaviour
         targetTracker = GetComponent<UITargetTracker>();
     }
 
-    public void SetSay(TalkBehaviour _talker, string _context, Item _item)
+    public void SetSay(TalkBehaviour _talker, Item _item)
     {
         talker = _talker;
         item = new Item(_item);
         iconImage.sprite = item.icon;
-        contextText.text = _context;
         targetTracker.SetTarget(talker.transform, _talker.transform.position, margin);
 
         if (delay != null)

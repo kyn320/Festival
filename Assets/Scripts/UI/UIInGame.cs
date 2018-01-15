@@ -49,9 +49,9 @@ public class UIInGame : MonoBehaviour
         sayManager.View(_talker, _talk);
     }
 
-    public void ViewWant(TalkBehaviour _talker, string _context, Item _item)
+    public void ViewWant(TalkBehaviour _talker, Item _item)
     {
-        wantManager.View(_talker, _context, _item);
+        wantManager.View(_talker, _item);
     }
 
     public void ViewPlayerMenu(bool _isView)

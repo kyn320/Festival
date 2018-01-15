@@ -6,5 +6,4 @@ using UnityEngine;
 public class Talk
 {
     public string say;
-    public int id;
 }
