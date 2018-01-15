@@ -6,5 +6,7 @@ using UnityEngine;
 public class NPC  {
 
     public string name;
+    public float findItemPercent;
+    public float buyItemPercent;
 
 }

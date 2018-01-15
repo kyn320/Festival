@@ -55,7 +55,6 @@ public class UISayBox : MonoBehaviour
         yield return new WaitForSeconds(1f);
         say = null;
         sayManager.AddList(this);
-        talker.Talk();
     }
 
 }

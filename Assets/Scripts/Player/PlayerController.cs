@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isInput)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     movePos.z = 0;

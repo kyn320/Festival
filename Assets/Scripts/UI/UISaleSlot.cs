@@ -101,10 +101,12 @@ public class UISaleSlot : UIItemSlot
 
         //인벤에 아이템 등록
         UIInGame.instance.inventory.AddSlot(new Item(item));
+        
+        PlayDataManager.instance.AddGold(-item.saleGold);
+
         //슬롯에 아이템 삭제
         RemoveSlot();
 
-        PlayDataManager.instance.AddGold(-item.saleGold);
 
         //리스트 업데이트
         UIInGame.instance.UpdateSalePannel();

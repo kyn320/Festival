@@ -17,6 +17,7 @@ public class ShopBehaviour : MonoBehaviour
     public SpriteRenderer tentPatternRenderer;
 
     public IsometricSpriteRenderer salePannel;
+    public Transform salePannelBottom;
 
     public GameObject itemPrefab;
 
@@ -39,6 +40,7 @@ public class ShopBehaviour : MonoBehaviour
     {
         SetSlot();
         CreateBatchItem();
+        info.location = tr.position;
     }
 
     void Update()
@@ -82,6 +84,21 @@ public class ShopBehaviour : MonoBehaviour
         info.itemList[_index] = null;
     }
 
+    public Item FindItem(int _index)
+    {
+        return info.FindItem(_index);
+    }
+
+    public List<Item> FindItemList(Item _item)
+    {
+        return info.FindItemList(_item);
+    }
+
+    public int FindItemIndex(int _id, int _saleGold)
+    {
+        return info.FindItemIndex(_id, _saleGold);
+    }
+
     public void CreateBatchItem()
     {
         ItemBehaviour itemBehaviour;
@@ -100,8 +117,8 @@ public class ShopBehaviour : MonoBehaviour
         boxCol.offset = new Vector2(0, size.y * 0.5f);
 
         boxCol = GetComponents<BoxCollider2D>()[1];
-        boxCol.size = size + size * 0.2f;
-        boxCol.offset = new Vector2(0, -size.y * 0.95f);
+        boxCol.size = new Vector2(size.x * 1.5f, size.y * 1.2f);
+        boxCol.offset = new Vector2(0, -size.y * 0.9f);
 
         salePannel.transform.localPosition = new Vector2(0, -(info.salePannelSize.y * (slotSize.y + margin.y) + startMargin.y) - 1);
 

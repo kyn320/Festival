@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     public bool isOnMenu = false;
 
-
     void Awake()
     {
         instance = this;

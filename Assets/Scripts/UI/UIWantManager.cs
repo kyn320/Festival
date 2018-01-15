@@ -12,11 +12,11 @@ public class UIWantManager : MonoBehaviour {
         UIWantBox.wantManager = this;
     }
 
-    public void View(TalkBehaviour _talker, Item _item)
+    public void View(TalkBehaviour _talker, string _context,Item _item)
     {
         UIWantBox sayBox = GetObject();
         sayBox.gameObject.SetActive(true);
-        sayBox.SetSay(_talker, _item);
+        sayBox.SetSay(_talker, _context, _item);
     }
 
     public void AddList(UIWantBox _wantBox)
