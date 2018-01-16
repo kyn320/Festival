@@ -5034,7 +5034,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2081947101}
   m_Script: {fileID: 11500000, guid: 85c8f73a1e356bb4f92e20c366dc48df, type: 3}
---- !u!1001 &774906817
+--- !u!1001 &779580904
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5073,71 +5073,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 224352111864285810, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224352111864285810, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224352111864285810, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224352111864285810, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224855379365843496, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 224855379365843496, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 212791479487963486, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -75
-      objectReference: {fileID: 0}
-    - target: {fileID: 212453652255351866, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 212675094253180974, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: -391
-      objectReference: {fileID: 0}
-    - target: {fileID: 114014761600925864, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 2baa5447e0343164ebc9553fa48b5e26, type: 2}
-    - target: {fileID: 212791479487963486, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2baa5447e0343164ebc9553fa48b5e26, type: 2}
-    - target: {fileID: 212453652255351866, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2baa5447e0343164ebc9553fa48b5e26, type: 2}
-    - target: {fileID: 212675094253180974, guid: 138ec28f204028749ab64abdc52d7a5a,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2baa5447e0343164ebc9553fa48b5e26, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 138ec28f204028749ab64abdc52d7a5a, type: 2}
   m_IsPrefabParent: 0
@@ -5378,7 +5313,7 @@ CanvasRenderer:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114199157756437374, guid: 138ec28f204028749ab64abdc52d7a5a,
     type: 2}
-  m_PrefabInternal: {fileID: 774906817}
+  m_PrefabInternal: {fileID: 779580904}
   m_Script: {fileID: 11500000, guid: fc4f7f33d8fc7c0419b2308165807ce0, type: 3}
 --- !u!4 &825628582 stripped
 Transform:
@@ -5744,6 +5679,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -7649,11 +7585,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6e1cdcb2f5b772498f28b986437a68e, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1302759268 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4645456924278866, guid: 138ec28f204028749ab64abdc52d7a5a,
-    type: 2}
-  m_PrefabInternal: {fileID: 774906817}
 --- !u!1 &1312318517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9083,60 +9014,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1551571121}
---- !u!1 &1573315934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1573315935}
-  - component: {fileID: 1573315936}
-  m_Layer: 8
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1573315935
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573315934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1302759268}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1573315936
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573315934}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 5}
-  m_EdgeRadius: 0
 --- !u!1001 &1575213966
 Prefab:
   m_ObjectHideFlags: 0
@@ -11715,7 +11592,7 @@ MonoBehaviour:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114529479361151094, guid: 138ec28f204028749ab64abdc52d7a5a,
     type: 2}
-  m_PrefabInternal: {fileID: 774906817}
+  m_PrefabInternal: {fileID: 779580904}
   m_Script: {fileID: 11500000, guid: fc4f7f33d8fc7c0419b2308165807ce0, type: 3}
 --- !u!1 &2002635249
 GameObject:

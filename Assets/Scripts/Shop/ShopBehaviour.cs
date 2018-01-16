@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShopBehaviour : MonoBehaviour
 {
@@ -9,9 +8,6 @@ public class ShopBehaviour : MonoBehaviour
     public Shop info;
 
     public List<GameObject> batchObjectList;
-
-    public Image signBackground;
-    public Text signText;
 
     public SpriteMask tentShapeMask;
     public SpriteRenderer tentPatternRenderer;
@@ -33,7 +29,6 @@ public class ShopBehaviour : MonoBehaviour
     {
         tr = GetComponent<Transform>();
         tentPatternRenderer.color = info.tentColor;
-        signText.text = info.name;
     }
 
     void Start()
