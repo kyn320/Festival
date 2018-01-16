@@ -22,14 +22,15 @@ public class IsometricSpriteRenderer : MonoBehaviour
     void Awake()
     {
         tr = GetComponent<Transform>();
+        Rendering();
+
+        if (gameObject.isStatic)
+            Destroy(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.isStatic)
-            return;
-
         Rendering();
     }
 
@@ -47,7 +48,8 @@ public class IsometricSpriteRenderer : MonoBehaviour
     }
 
 
-    public void SetParent(IsometricSpriteRenderer _isoSpr, bool _isAllow) {
+    public void SetParent(IsometricSpriteRenderer _isoSpr, bool _isAllow)
+    {
         parentRenderer = _isoSpr;
         isAllowParentRenderer = _isAllow;
     }

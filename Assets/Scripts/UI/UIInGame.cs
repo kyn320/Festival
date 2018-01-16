@@ -34,9 +34,9 @@ public class UIInGame : MonoBehaviour
         notice.View(_notice, _isView);
     }
 
-    public void UpdateTime()
+    public void UpdateTime(float _dayTime)
     {
-        dayHeader.UpdateTime();
+        dayHeader.UpdateTime(_dayTime);
     }
 
     public void ViewSalePannel(ShopBehaviour _shop, bool _isView, bool _isExit, bool _isEdit)

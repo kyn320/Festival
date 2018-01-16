@@ -11,21 +11,18 @@ public class UIDayHeader : MonoBehaviour
     public Slider daySlider;
     public Text timeText;
 
-    public void UpdateTime()
+    public void UpdateTime(float _dayTime)
     {
         timeText.text = string.Format("{0:D2} : {1:D2}", GameManager.instance.hour, GameManager.instance.min);
         monthDayText.text = string.Format("{0:D2} / {1:D2}", GameManager.instance.month, GameManager.instance.day);
-
-        float dayTime = GameManager.instance.hour * 3600f + GameManager.instance.min * 60f + GameManager.instance.sec;
         
-        if (dayTime >= 43200)
+        if (_dayTime >= 43200)
         {
-            daySlider.value = 1 - ((dayTime - 43200f) / 43200f);
+            daySlider.value = 1 - ((_dayTime - 43200f) / 43200f);
         }
         else {
-            daySlider.value = dayTime / 43200f;
+            daySlider.value = _dayTime / 43200f;
         }
-
 
     }
 
