@@ -69,12 +69,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (isLocal && isInput)
-            Move();
-    }
-
     void StopMove()
     {
         isMove = false;

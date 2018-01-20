@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class PixelPerfectCamera : MonoBehaviour
 {
 
     Camera cam;
 
-    public int targetWidth = 640;
-
-    public int pixelsToUnit = 32;
-
-    public float originSize = 0.1f;
+    public float originSize = 1f;
 
     void Awake()
     {
         cam = GetComponent<Camera>();
+    }
+
+    void Start()
+    {
         cam.orthographicSize = originSize = SetSize();
     }
-    
+
     float SetSize()
     {
-        int height = Mathf.RoundToInt(targetWidth / (float)Screen.width * Screen.height);
-        return height / pixelsToUnit / 2;
+        int height = Mathf.RoundToInt(GameManager.instance.mapWidth / (float)Screen.width * Screen.height);
+        return height / GameManager.pixelsToUnit * 0.5f;
     }
+
 }

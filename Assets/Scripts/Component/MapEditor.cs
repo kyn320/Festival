@@ -7,29 +7,40 @@ public class MapEditor : MonoBehaviour
     public static MapEditor instance;
     public static bool isEditMode = false;
     public static bool isMouseCamControl = false;
-    
+
     [SerializeField]
-    Transform target;
+    public Transform target;
 
     void Awake()
     {
         instance = this;
     }
 
-    void Start() {
+    void Start()
+    {
         StartEditMode();
     }
 
-
-
-
-    void StartEditMode() {
+    public void StartEditMode()
+    {
         isEditMode = true;
+        PlayDataManager.instance.player.SetInput(false);
+    }
+
+    public void StartMouseControl()
+    {
         isMouseCamControl = true;
+    }
+
+    public void SetTarget(Transform _target) {
+        target = _target;
     }
 
     void Update()
     {
+        if (!isEditMode)
+            return;
+
         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             if (target == null)
@@ -42,6 +53,9 @@ public class MapEditor : MonoBehaviour
             }
             else {
                 target = null;
+
+                isEditMode = false;
+                PlayDataManager.instance.player.SetInput(false);
             }
         }
 

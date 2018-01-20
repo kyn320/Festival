@@ -13,6 +13,9 @@ public class PlayDataManager : MonoBehaviour
 
     public int gold;
 
+    public List<MapObjectItem> mapObjectInventory;
+
+
     void Awake()
     {
         instance = this;

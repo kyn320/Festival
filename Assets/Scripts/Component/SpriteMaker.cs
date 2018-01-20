@@ -8,15 +8,21 @@ using UnityEditor;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteMaker : MonoBehaviour
 {
+    public Transform cam;
+
     public Texture2D signTex;
     SpriteRenderer sprRender;
 
     Texture2D tex;
-    Color32[] colorArray;
+    Color[] colorArray;
+
+    public GameObject pixelGridPrefab;
+    SpritePixelGrid[] pixelGridArray;
 
     void Awake()
     {
         sprRender = GetComponent<SpriteRenderer>();
+        SpritePixelGrid.spriteMaker = this;
     }
 
     // Use this for initialization
@@ -27,33 +33,47 @@ public class SpriteMaker : MonoBehaviour
         MakeSprite();
     }
 
-
     void MakeTexture()
     {
+        bool setWhite;
+
         if (signTex == null)
         {
             tex = new Texture2D(96, 32, TextureFormat.RGBA32, false);
-            colorArray = new Color32[tex.width * tex.height];
-
-            for (int x = 0; x < tex.width; ++x)
-            {
-                for (int y = 0; y < tex.height; ++y)
-                {
-                    int pixelIndex = x + (y * tex.width);
-                    colorArray[pixelIndex] = Color.white;
-                }
-            }
-            print(colorArray[0]);
+            colorArray = new Color[tex.width * tex.height];
+            setWhite = true;
         }
         else
         {
-            print("is not null");
             tex = signTex;
-            colorArray = tex.GetPixels32();
-            print(colorArray[0]);
+            colorArray = tex.GetPixels();
+            setWhite = false;
         }
 
-        tex.SetPixels32(colorArray);
+        cam.position = new Vector2(tex.width * 0.5f, tex.height * 0.5f);
+
+        print("total size = " + tex.width * tex.height);
+        pixelGridArray = new SpritePixelGrid[tex.width * tex.height];
+
+        for (int x = 0; x < tex.width; ++x)
+        {
+            for (int y = 0; y < tex.height; ++y)
+            {
+                int pixelIndex = x + (y * tex.width);
+                if (setWhite)
+                {
+                    colorArray[pixelIndex] = Color.white;
+                }
+
+                pixelGridArray[pixelIndex] = Instantiate(pixelGridPrefab,
+                    new Vector3(x, y, 0),
+                    Quaternion.identity, transform).GetComponent<SpritePixelGrid>();
+
+                pixelGridArray[pixelIndex].SetColor(pixelIndex, colorArray[pixelIndex]);
+            }
+        }
+
+        tex.SetPixels(colorArray);
         tex.Apply();
 
         tex.wrapMode = TextureWrapMode.Clamp;
@@ -68,9 +88,21 @@ public class SpriteMaker : MonoBehaviour
         SaveSpriteToEditorPath(spr, "Assets/Resource/" + spr.name + ".png");
     }
 
+    public void UpdateColor(int _index, Color _color)
+    {
+        colorArray[_index] = _color;
+    }
+
+    public void Save()
+    {
+        tex.SetPixels(colorArray);
+        tex.Apply();
+
+        MakeSprite();
+    }
+
     Sprite SaveSpriteToEditorPath(Sprite sp, string path)
     {
-
         string dir = Path.GetDirectoryName(path);
 
         Directory.CreateDirectory(dir);
@@ -85,6 +117,8 @@ public class SpriteMaker : MonoBehaviour
         ti.spritePixelsPerUnit = sp.pixelsPerUnit;
         ti.wrapMode = sp.texture.wrapMode;
         ti.filterMode = sp.texture.filterMode;
+        ti.textureCompression = TextureImporterCompression.Uncompressed;
+        ti.textureFormat = TextureImporterFormat.RGBA32;
         ti.mipmapEnabled = false;
         ti.isReadable = true;
 
@@ -93,6 +127,4 @@ public class SpriteMaker : MonoBehaviour
 
         return AssetDatabase.LoadAssetAtPath(path, typeof(Sprite)) as Sprite;
     }
-
-
 }
