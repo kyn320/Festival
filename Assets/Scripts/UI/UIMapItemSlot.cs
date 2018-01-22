@@ -57,11 +57,17 @@ public class UIMapItemSlot : MonoBehaviour
     public void CreateObject()
     {
         UIInGame.instance.itemInfo.OnExit();
-        UIMapEditor.instance.ViewInventory(false);
-
-        MapEditor.instance.StartEditMode();
+        inventory.View(false);
+        MapEditor.instance.SetEditMode(true);
         GameObject g = Instantiate(item.mapObjectPrefab, (Vector2)Camera.main.transform.position, Quaternion.identity);
-        MapEditor.instance.SetTarget(g.transform);
+        g.GetComponent<MapObjectItemBehaviour>().item = new MapObjectItem(item);
+        MapEditor.instance.SetTarget(g.transform, FinishBatch);
+    }
+
+    public void FinishBatch()
+    {
+        RemoveSlot();
+        inventory.UpdateSlotList();
     }
 
     public UIMapEditorInventory GetInventory()

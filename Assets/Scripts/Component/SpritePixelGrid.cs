@@ -11,6 +11,8 @@ public class SpritePixelGrid : MonoBehaviour
     public int index = 0;
     public Color color;
 
+    public bool isOver = false;
+
     SpriteRenderer spr;
 
     void Awake()
@@ -31,6 +33,18 @@ public class SpritePixelGrid : MonoBehaviour
         spr.color = color;
 
         spriteMaker.UpdateColor(index, color);
+    }
+
+    public void UpdateOverColor(bool _isOver, Color _overColor)
+    {
+        isOver = _isOver;
+
+        if (isOver)
+        {
+            spr.color = _overColor;
+        }
+        else
+            spr.color = color;
     }
 
 }

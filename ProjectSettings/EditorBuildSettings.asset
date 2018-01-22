@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/scene.unity
     guid: 77e72a9690050fd44a346f26986157b1
+  - enabled: 1
+    path: Assets/Scenes/spriteMakerTest.unity
+    guid: 92809eeca9e71e543bccf32e079c8e9e

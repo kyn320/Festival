@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114314851477227234}
   - component: {fileID: 114397442812484480}
   - component: {fileID: 114226221908535960}
+  - component: {fileID: 114499172131759652}
   m_Layer: 0
   m_Name: Lantern_Blue
   m_TagString: Untagged
@@ -138,7 +139,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1166116}
@@ -164,8 +165,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.07586241, g: 0, b: 1, a: 1}
-  m_Intensity: 7
-  m_Range: 2.26
+  m_Intensity: 0
+  m_Range: 30
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -233,8 +234,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightPoint: {fileID: 108444941862799354}
-  maxIntensity: 3
+  maxIntensity: 2.5
   switchSpeed: 10
+--- !u!114 &114499172131759652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185104527618840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa55f52d525d6e4bb850093d14d96a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    name: 
+    id: 0
+    icon: {fileID: 0}
+    context: 
+    gold: 0
+    saleGold: 0
+    mapObjectPrefab: {fileID: 0}
 --- !u!212 &212484645723604436
 SpriteRenderer:
   m_ObjectHideFlags: 1

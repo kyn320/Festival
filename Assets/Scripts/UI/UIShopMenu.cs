@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIShopMenu : UIRadialMenu
 {
@@ -21,6 +22,10 @@ public class UIShopMenu : UIRadialMenu
     public void OnDesign()
     {
         UIInGame.instance.ViewShopDesign(shop);
+    }
+
+    public void OnSignDesign() {
+        SceneManager.LoadScene("spriteMakerTest", LoadSceneMode.Single);
     }
 
     public void OnSalePannel()

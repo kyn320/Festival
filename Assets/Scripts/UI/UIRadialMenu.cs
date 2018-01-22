@@ -82,6 +82,10 @@ public class UIRadialMenu : MonoBehaviour
             yield return null;
         }
 
+        if (_flow < 0) {
+            tr.localScale = Vector3.zero;
+        }
+
         if (_action != null)
         {
             _action.Invoke();

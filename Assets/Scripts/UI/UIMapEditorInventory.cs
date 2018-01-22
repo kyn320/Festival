@@ -18,19 +18,20 @@ public class UIMapEditorInventory : MonoBehaviour
 
     public bool isView = false;
 
+    Animator ani;
     public GameObject exitButton;
 
     void Awake()
     {
         tr = GetComponent<RectTransform>();
+        ani = GetComponent<Animator>();
         UIMapItemSlot.inventory = this;
     }
 
     public void View(bool _isView)
     {
         isView = _isView;
-
-        transform.GetChild(0).gameObject.SetActive(isView);
+        ani.SetTrigger("View");
 
         if (!isView)
             return;
@@ -81,7 +82,7 @@ public class UIMapEditorInventory : MonoBehaviour
                 slot.SetSlot(i, itemList[i]);
             }
         }
-
+        UpdateEmptySlot(false);
     }
 
     public void UpdateEmptySlot(bool _isView)

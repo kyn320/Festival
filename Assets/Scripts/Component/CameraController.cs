@@ -40,6 +40,14 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        float sw = Input.GetAxis("Mouse ScrollWheel");
+        if (Mathf.Abs(sw) > 0.01f)
+        {
+            Camera.main.orthographicSize += -sw * zoomFactor;
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
+            CalcMinMax();
+        }
+
         if (!MapEditor.isMouseCamControl)
             return;
 
@@ -55,13 +63,6 @@ public class CameraController : MonoBehaviour
             transform.position -= (v3Pos - v3OrgMouse);
         }
 
-        float sw = Input.GetAxis("Mouse ScrollWheel");
-        if (Mathf.Abs(sw) > 0.01f)
-        {
-            Camera.main.orthographicSize += -sw * zoomFactor;
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, minZoom, maxZoom);
-            CalcMinMax();
-        }
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
@@ -72,7 +73,10 @@ public class CameraController : MonoBehaviour
     {
         if (!MapEditor.isMouseCamControl && target != null)
         {
-            tr.position = Vector3.Lerp(tr.position, target.position + margin, Time.deltaTime * followSpeed);
+            Vector3 pos = Vector3.Lerp(tr.position, target.position + margin, Time.deltaTime * followSpeed);
+            pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            transform.position = pos;
         }
     }
 

@@ -20,7 +20,10 @@ public class UIInventory : UIGridPannel
         base.View(_isView, _isExit);
 
         if (!isView)
+        {
+            UIInGame.instance.playerMenu.ViewAnimate();
             return;
+        }
 
         itemList = PlayDataManager.instance.inventory;
         gridSize = PlayDataManager.instance.inventorySize;

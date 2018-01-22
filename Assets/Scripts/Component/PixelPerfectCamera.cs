@@ -8,6 +8,7 @@ public class PixelPerfectCamera : MonoBehaviour
     Camera cam;
 
     public float originSize = 1f;
+    public float mapWidth;
 
     void Awake()
     {
@@ -21,7 +22,12 @@ public class PixelPerfectCamera : MonoBehaviour
 
     float SetSize()
     {
-        int height = Mathf.RoundToInt(GameManager.instance.mapWidth / (float)Screen.width * Screen.height);
+        int height;
+        if (GameManager.instance == null)
+            height = Mathf.RoundToInt(mapWidth / (float)Screen.width * Screen.height);
+        else
+            height = Mathf.RoundToInt(GameManager.instance.mapWidth / (float)Screen.width * Screen.height);
+
         return height / GameManager.pixelsToUnit * 0.5f;
     }
 

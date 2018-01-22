@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIMapEditor : MonoBehaviour {
-
-    public static UIMapEditor instance;
-
-    public UIMapEditorInventory inventory;
     
-    void Awake() {
-        instance = this;
+    public GameObject title;
+    public UIMapEditorInventory inventory;
+
+    public void OnEdit()
+    {
+        gameObject.SetActive(true);
+        MapEditor.instance.SetMouseControl(true);
     }
 
-    void Start() {
-        OnEdit();
-    }
-
-    public void OnEdit() {
-        MapEditor.instance.StartMouseControl();
+    public void OnExit()
+    {
+        gameObject.SetActive(false);
+        MapEditor.instance.SetMouseControl(false);
+        UIInGame.instance.ViewPlayerMenu(true);
     }
 
     public void ViewInventory(bool _isView)

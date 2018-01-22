@@ -9,26 +9,34 @@ public class UIPlayerMenu : UIRadialMenu
     {
         base.View(_isView);
     }
-    
-    public void OnStatus() {
 
+    public void OnStatus()
+    {
+        HideAnimate(null);
     }
 
     public void OnInventory()
     {
+        HideAnimate(null);
         UIInGame.instance.ViewInventory(true, true);
+    }
+
+    public void OnMapEdit()
+    {
+        HideAnimate(null);
+        MapEditor.instance.ui.OnEdit();
     }
 
     public void OnCalendar()
     {
-
+        HideAnimate(null);
     }
 
     public void OnGameEnd()
     {
-
+        HideAnimate(null);
     }
-    
+
     protected override void HideButton()
     {
         base.HideButton();
