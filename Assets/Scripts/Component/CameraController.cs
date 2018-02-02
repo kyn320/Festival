@@ -25,6 +25,9 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float minY, maxY;
 
+    public float mapWidth;
+    public int pixelsToUnit = 32;
+
     void Awake()
     {
         tr = GetComponent<Transform>();
@@ -34,7 +37,14 @@ public class CameraController : MonoBehaviour
     {
         orginZoom = Camera.main.orthographicSize;
         dist = transform.position.z;
-        maxZoom = Mathf.RoundToInt(GameManager.instance.mapWidth / (float)Screen.width * Screen.height) / GameManager.pixelsToUnit * 0.5f;
+
+        if (GameManager.instance != null)
+        {
+            mapWidth = GameManager.instance.mapWidth;
+            pixelsToUnit = GameManager.pixelsToUnit;
+        }
+
+        maxZoom = Mathf.RoundToInt(mapWidth / (float)Screen.width * Screen.height) / pixelsToUnit * 0.5f;
         CalcMinMax();
     }
 

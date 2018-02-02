@@ -12,6 +12,8 @@ public class UIShopDesign : MonoBehaviour
 
     public UIColorPicker colorPicker;
 
+    public UISpriteListView signListView;
+
     [SerializeField]
     ShopBehaviour shop;
 
@@ -30,11 +32,16 @@ public class UIShopDesign : MonoBehaviour
         targetTracker.SetTarget(_shop.transform, Camera.main.WorldToScreenPoint(_shop.transform.position), Vector3.zero);
         colorPicker.Color = _shop.info.tentColor;
         colorPicker.SetOnValueChangeCallback(OnChangeColor);
+        signListView.ViewList(true, false, UpdateSign);
     }
 
     public void OnChangeColor(Color _color)
     {
         shop.ChangeDesign(selectShape, shapeList[selectShape], selectPattern, patternList[selectPattern], _color);
+    }
+
+    public void UpdateSign(Sprite _sprite) {
+        shop.signRenderer.sprite = _sprite;
     }
 
     public void UpdateShape(int _next)
@@ -62,7 +69,9 @@ public class UIShopDesign : MonoBehaviour
         shop.ChangeDesign(selectShape, shapeList[selectShape], selectPattern, patternList[selectPattern], colorPicker.Color);
     }
 
-    public void ViewExit() {
+    public void ViewExit()
+    {
+        signListView.ViewList(false, false);
         UIInGame.instance.shopMenu.ViewAnimate();
         gameObject.SetActive(false);
     }

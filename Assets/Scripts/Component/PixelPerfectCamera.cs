@@ -8,7 +8,10 @@ public class PixelPerfectCamera : MonoBehaviour
     Camera cam;
 
     public float originSize = 1f;
+
     public float mapWidth;
+    public int pixelsToUnit = 32;
+
 
     void Awake()
     {
@@ -18,17 +21,19 @@ public class PixelPerfectCamera : MonoBehaviour
     void Start()
     {
         cam.orthographicSize = originSize = SetSize();
+
+        if (GameManager.instance != null)
+        {
+            mapWidth = GameManager.instance.mapWidth;
+            pixelsToUnit = GameManager.pixelsToUnit;
+        }
     }
 
     float SetSize()
     {
-        int height;
-        if (GameManager.instance == null)
-            height = Mathf.RoundToInt(mapWidth / (float)Screen.width * Screen.height);
-        else
-            height = Mathf.RoundToInt(GameManager.instance.mapWidth / (float)Screen.width * Screen.height);
+        int height = Mathf.RoundToInt(mapWidth / (float)Screen.width * Screen.height);
 
-        return height / GameManager.pixelsToUnit * 0.5f;
+        return height / pixelsToUnit * 0.5f;
     }
 
 }

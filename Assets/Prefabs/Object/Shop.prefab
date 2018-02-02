@@ -417,6 +417,7 @@ MonoBehaviour:
     tentPattern: 0
     tentColor: {r: 1, g: 1, b: 1, a: 1}
   batchObjectList: []
+  signRenderer: {fileID: 212746487398597834}
   tentShapeMask: {fileID: 331333873290254424}
   tentPatternRenderer: {fileID: 212675094253180974}
   salePannel: {fileID: 114253410445757862}
@@ -615,7 +616,7 @@ SpriteRenderer:
   m_SortingLayerID: 1169446593
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b523efa073be9043b55da45986059f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72fcfac8e5e7c3e468cfb39d12fb7115, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpriteMakerBrush : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class SpriteMakerBrush : MonoBehaviour
     public float lerpTime = 10f;
 
     bool isDown = false;
-    public bool eraserMode = false;
+    public bool eraserMode = false, spoidMode = false;
+
+    public UnityAction<Color> spoidAction;
 
     Vector3 brushPos;
 
@@ -37,7 +40,7 @@ public class SpriteMakerBrush : MonoBehaviour
         {
             isDown = false;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             eraserMode = !eraserMode;
@@ -71,14 +74,29 @@ public class SpriteMakerBrush : MonoBehaviour
         {
             if (eraserMode)
                 pixelGrid.UpdateColor(Color.white);
+            else if (spoidMode)
+            {
+                if (spoidAction != null)
+                    spoidAction.Invoke(pixelGrid.color);
+
+                ChangeColor(pixelGrid.color);
+            }
             else
                 pixelGrid.UpdateColor(brushColor);
         }
         else {
-            pixelGrid.UpdateOverColor(true, Color.gray);
+            if (spoidMode)
+            {
+                if (spoidAction != null)
+                    spoidAction.Invoke(pixelGrid.color);
+            }
+            else
+            {
+                pixelGrid.UpdateOverColor(true, Color.gray);
+            }
         }
     }
-    
+
     void OnTriggerExit2D(Collider2D _col)
     {
         pixelGrid = _col.gameObject.GetComponent<SpritePixelGrid>();

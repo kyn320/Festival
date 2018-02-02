@@ -38,6 +38,10 @@ public class SpriteMaker : MonoBehaviour
         ui.ViewList(true, false);
     }
 
+    /// <summary>
+    /// 주어진 스프라이트로 생성
+    /// </summary>
+    /// <param name="_spr"></param>
     public void CreateFile(Sprite _spr)
     {
         signTex = _spr.texture;
@@ -45,9 +49,25 @@ public class SpriteMaker : MonoBehaviour
         MakeSprite(_spr.name);
     }
 
+    /// <summary>
+    /// 주어진 파일 이름으로 생성
+    /// </summary>
+    /// <param name="_fileName"></param>
     public void CreateFile(string _fileName)
     {
         MakeTexture(true);
+        MakeSprite(_fileName);
+    }
+
+    /// <summary>
+    /// 주어진 파일 이름으로 저장
+    /// </summary>
+    /// <param name="_fileName"></param>
+    public void SaveFile(string _fileName)
+    {
+        tex.SetPixels(colorArray);
+        tex.Apply();
+        
         MakeSprite(_fileName);
     }
 
@@ -59,16 +79,14 @@ public class SpriteMaker : MonoBehaviour
         {
             tex = new Texture2D(96, 32, TextureFormat.RGBA32, false);
             colorArray = new Color[tex.width * tex.height];
-            setWhite = true;
         }
         else
         {
             tex = signTex;
             colorArray = tex.GetPixels();
-            setWhite = false;
         }
 
-        cam.position = new Vector2(Mathf.RoundToInt((tex.width + (tex.width * margin.x) - margin.x * 2) * 0.5f), (tex.height + (tex.height * margin.y) - margin.y * 2) * 0.5f);
+        cam.position = new Vector2((tex.width + (tex.width * margin.x) - margin.x) * 0.5f - 0.5f, (tex.height + (tex.height * margin.y) - margin.y) * 0.5f);
 
         if (pixelGridArray == null)
             pixelGridArray = new SpritePixelGrid[tex.width * tex.height];
@@ -103,7 +121,7 @@ public class SpriteMaker : MonoBehaviour
     {
         Sprite spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.one * 0.5f, 32);
 
-        if (signTex)
+        if (signTex && signTex.name == _fileName)
         {
             spr.name = signTex.name;
         }
@@ -124,14 +142,6 @@ public class SpriteMaker : MonoBehaviour
     public void UpdateColor(int _index, Color _color)
     {
         colorArray[_index] = _color;
-    }
-
-    public void Save()
-    {
-        tex.SetPixels(colorArray);
-        tex.Apply();
-
-        MakeSprite(null);
     }
 
     Sprite SaveSpriteToEditorPath(Sprite sp, string path)

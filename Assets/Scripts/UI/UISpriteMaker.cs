@@ -24,6 +24,8 @@ public class UISpriteMaker : MonoBehaviour
     public InputField nameSetField;
     public GameObject createNameSet;
 
+    public Image spoidColor;
+
     void Awake()
     {
         UISpriteListView.ui = this;
@@ -43,6 +45,7 @@ public class UISpriteMaker : MonoBehaviour
     public void OnColorPicker()
     {
         buttonWorks[2] = !buttonWorks[2];
+        colorPicker.Color = brush.brushColor;
         colorPicker.SetOnValueChangeCallback(ChangeColor);
         colorPicker.gameObject.SetActive(buttonWorks[2]);
     }
@@ -81,6 +84,26 @@ public class UISpriteMaker : MonoBehaviour
         }
     }
 
+    public void OnSpoid()
+    {
+        if (brush.spoidMode)
+        {
+            spoidColor.gameObject.SetActive(false);
+            brush.spoidMode = false;
+        }
+        else
+        {
+            brush.spoidMode = true;
+            spoidColor.gameObject.SetActive(true);
+            brush.spoidAction = ChangeSpoidColor;
+        }
+    }
+
+    public void ChangeSpoidColor(Color _color)
+    {
+        spoidColor.color = _color;
+    }
+
     public void OnExit()
     {
         SceneManager.LoadScene("scene", LoadSceneMode.Single);
@@ -89,6 +112,9 @@ public class UISpriteMaker : MonoBehaviour
     public void OnNewFile(bool _isView)
     {
         createNameSet.SetActive(_isView);
+
+        if (SpriteMaker.instance.signTex != null)
+            nameSetField.text = SpriteMaker.instance.signTex.name;
     }
 
     public void OnCreateFile()
@@ -96,7 +122,16 @@ public class UISpriteMaker : MonoBehaviour
         if (nameSetField.text == "")
             return;
 
-        SpriteMaker.instance.CreateFile(nameSetField.text);
+        if (SpriteMaker.instance.signTex != null)
+        {
+            print("save");
+            SpriteMaker.instance.SaveFile(nameSetField.text);
+        }
+        else
+        {
+            print("create");
+            SpriteMaker.instance.CreateFile(nameSetField.text);
+        }
 
         OnViewList(false);
         OnNewFile(false);

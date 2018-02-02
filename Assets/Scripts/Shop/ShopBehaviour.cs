@@ -9,6 +9,7 @@ public class ShopBehaviour : MonoBehaviour
 
     public List<GameObject> batchObjectList;
 
+    public SpriteRenderer signRenderer;
     public SpriteMask tentShapeMask;
     public SpriteRenderer tentPatternRenderer;
 
